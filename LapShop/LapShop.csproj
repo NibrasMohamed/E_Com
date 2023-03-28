@@ -46,4 +46,9 @@
     <Folder Include="wwwroot\lib\font-awesome\scss\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.32.1" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.0" />
+  </ItemGroup>
+
 </Project>
