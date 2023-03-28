@@ -38,5 +38,10 @@ namespace LapShop.Controllers
         {
             return View();
         }
+
+        public IActionResult Detail()
+        {
+            return View();
+        }
     }
 }

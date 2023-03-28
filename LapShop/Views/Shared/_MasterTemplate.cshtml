@@ -86,7 +86,7 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item"><a  class="nav-link active" asp-controller="Home" asp-action="Index" >Home</a></li>
               <li class="nav-item"><a  class="nav-link" asp-controller="Home" asp-action="Products"> Products </a></li>
-              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Men<b class="caret"></b></a>
+              @* <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Men<b class="caret"></b></a>
                 <ul class="dropdown-menu megamenu">
                   <li>
                     <div class="row">
@@ -136,8 +136,8 @@
                     </div>
                   </li>
                 </ul>
-              </li>
-              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Ladies<b class="caret"></b></a>
+              </li> *@
+              @* <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Ladies<b class="caret"></b></a>
                 <ul class="dropdown-menu megamenu">
                   <li>
                     <div class="row">
@@ -183,7 +183,7 @@
                     </div>
                   </li>
                 </ul>
-              </li>
+              </li> *@
               <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Template<b class="caret"></b></a>
                 <ul class="dropdown-menu megamenu">
                   <li>
@@ -201,7 +201,7 @@
                       <div class="col-md-6 col-lg-3">
                         <h5>User</h5>
                         <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="register.html" class="nav-link">Register / login</a></li>
+                          <li class="nav-item"><a asp-controller="Register" asp-action="Register" class="nav-link">Register / login</a></li>
                           <li class="nav-item"><a href="customer-orders.html" class="nav-link">Orders history</a></li>
                           <li class="nav-item"><a href="customer-order.html" class="nav-link">Order history detail</a></li>
                           <li class="nav-item"><a href="customer-wishlist.html" class="nav-link">Wishlist</a></li>
