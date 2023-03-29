@@ -24,12 +24,9 @@ namespace LapShop.Controllers
             var name = Request.Form["name"];
             var email = Request.Form["email"];
             var password = Request.Form["password"];
+            var query = "";
 
-            using (var con = DataBaseConnection.DataBaseConnection.DbConnect())
-            {
-                con.Open();
-            }
-                return RedirectToAction(password, name, email);
+            return RedirectToAction(password, name, email);
 
 
         }

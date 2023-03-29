@@ -1,5 +1,7 @@
-﻿using LapShop.Models;
+﻿using LapShop.DataBaseConnection;
+using LapShop.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace LapShop.Controllers
@@ -7,14 +9,18 @@ namespace LapShop.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly MyDbContext _dbContext;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MyDbContext dbContext)
         {
             _logger = logger;
+            _dbContext = dbContext;
         }
 
         public IActionResult Index()
         {
+            var users = _dbContext.Users.ToList();
+
             return View();
         }
 

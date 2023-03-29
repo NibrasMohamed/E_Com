@@ -14,7 +14,8 @@ namespace LapShop.DataBaseConnection
 
         public static IDbConnection DbConnect()
         {
-            string connectionString = _config.GetConnectionString("DefaultConnection");
+         //   string connectionString = _config.GetConnectionString("DefaultConnection");
+            string connectionString = "server=127.0.0.1;database=e_com_db;user=root;password=;port=3306;";
 
             IDbConnection connection = new MySqlConnection(connectionString);
 
