@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 
 namespace LapShop.Controllers
@@ -24,7 +23,7 @@ namespace LapShop.Controllers
             var name = Request.Form["name"];
             var email = Request.Form["email"];
             var password = Request.Form["password"];
-            var query = "";
+            
 
             return RedirectToAction(password, name, email);
 

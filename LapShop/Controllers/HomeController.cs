@@ -2,6 +2,7 @@
 using LapShop.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
 using System.Diagnostics;
 
 namespace LapShop.Controllers
@@ -19,7 +20,6 @@ namespace LapShop.Controllers
 
         public IActionResult Index()
         {
-            var users = _dbContext.Users.ToList();
 
             return View();
         }
@@ -37,7 +37,9 @@ namespace LapShop.Controllers
 
         public IActionResult Products()
         {
-            return View();
+            var categories = _dbContext.Categories.ToList();
+
+            return View( categories );
         }
 
         public IActionResult Cart()
