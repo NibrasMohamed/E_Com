@@ -20,13 +20,18 @@ namespace LapShop.Controllers
         [HttpPost]
         public IActionResult Register()
         {
-            var name = Request.Form["name"];
+            var name = Request.Form["first_name"];
+            var last_name = Request.Form["last_name"];
+            var address = Request.Form["address"];
+            var city = Request.Form["city"];
+            var country = Request.Form["country"];
+            var postal_code = Request.Form["code"];
+            var phone_no = Request.Form["phone_no"];
+            
             var email = Request.Form["email"];
             var password = Request.Form["password"];
-            
 
-            return RedirectToAction(password, name, email);
-
+            return RedirectToAction(last_name, email, password);
 
         }
 
