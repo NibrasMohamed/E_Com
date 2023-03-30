@@ -25,5 +25,7 @@ namespace LapShop.DataBaseConnection
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<ModelConfigurationItem> ModelConfigurations { get; set; }
+
+        public DbSet<Brand> Brands { get; set; }
     }
 }

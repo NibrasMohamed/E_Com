@@ -28,15 +28,18 @@
                 <div class="card-body">
                   <ul class="nav nav-pills flex-column category-menu">
 
-                    @foreach (var item in Model)
+                    @foreach (var item in ViewBag.Categories)
                     {
                         <li>
                             <a href="category.html" class="nav-link">@item.CategoryName <span class="badge badge-secondary">42</span></a>
                             <ul class="list-unstyled">
-                                <li><a href="category.html" class="nav-link">T-shirts</a></li>
-                                <li><a href="category.html" class="nav-link">Shirts</a></li>
+                                @foreach (var title in item.Series)
+                                {
+                                <li><a href="category.html" class="nav-link">@title.SeriesName</a></li>
+                                }
+                               @* <li><a href="category.html" class="nav-link">Shirts</a></li>
                                 <li><a href="category.html" class="nav-link">Pants</a></li>
-                                <li><a href="category.html" class="nav-link">Accessories</a></li>
+                                <li><a href="category.html" class="nav-link">Accessories</a></li>*@
                             </ul>
                         </li>
 
@@ -67,12 +70,16 @@
                 <div class="card-body">
                   <form>
                     <div class="form-group">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> Armani  (10)
-                        </label>
-                      </div>
-                      <div class="checkbox">
+                       @foreach (var item in ViewBag.Brands)
+                        {
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> @item.BrandName 
+                                </label>
+                            </div>
+                        }
+                      
+                     @* <div class="checkbox">
                         <label>
                           <input type="checkbox"> Versace  (12)
                         </label>
@@ -86,7 +93,7 @@
                         <label>
                           <input type="checkbox"> Jack Honey  (14)
                         </label>
-                      </div>
+                      </div>*@
                     </div>
                     <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
                   </form>

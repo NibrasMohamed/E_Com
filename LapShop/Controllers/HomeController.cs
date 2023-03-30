@@ -38,8 +38,13 @@ namespace LapShop.Controllers
         public IActionResult Products()
         {
             var categories = _dbContext.Categories.ToList();
+            var brands = _dbContext.Brands.ToList();
+            var series = _dbContext.Series.ToList();
 
-            return View( categories );
+            ViewBag.Categories = categories;
+            ViewBag.Brands = brands;
+
+            return View();
         }
 
         public IActionResult Cart()

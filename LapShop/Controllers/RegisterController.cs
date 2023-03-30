@@ -1,11 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LapShop.DataBaseConnection;
+using LapShop.Models;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace LapShop.Controllers
 {
     public class RegisterController : Controller
     {
+        private readonly MyDbContext _dbContext;
         // GET: RegisterController
+        public RegisterController(MyDbContext dbContext) 
+        {
+            _dbContext = dbContext;
+        }
         public ActionResult Index()
         {
             return View("Register");
@@ -20,7 +27,7 @@ namespace LapShop.Controllers
         [HttpPost]
         public IActionResult Register()
         {
-            var name = Request.Form["first_name"];
+            var first_name = Request.Form["first_name"];
             var last_name = Request.Form["last_name"];
             var address = Request.Form["address"];
             var city = Request.Form["city"];
@@ -28,10 +35,73 @@ namespace LapShop.Controllers
             var postal_code = Request.Form["code"];
             var phone_no = Request.Form["phone_no"];
             
+            
             var email = Request.Form["email"];
             var password = Request.Form["password"];
 
-            return RedirectToAction(last_name, email, password);
+            if (string.IsNullOrEmpty(first_name))
+            {
+                ModelState.AddModelError("first_name", "First name is required");
+            }
+
+            if (string.IsNullOrEmpty(last_name))
+            {
+                ModelState.AddModelError("last_name", "Last name is required");
+            }
+
+            if (string.IsNullOrEmpty(email))
+            {
+                ModelState.AddModelError("email", "Email is required");
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                ModelState.AddModelError("password", "Password is required");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            try
+            {
+                var user = new User
+                {
+                    Email = email,
+                    Password = password
+                };
+
+                _dbContext.Add(user);
+                _dbContext.SaveChanges();
+
+                var customer = new Customer
+                {
+                    FirstName = first_name,
+                    LastName = last_name,
+                    Address = address,
+                    City = city,
+                    Phone = phone_no,
+                    Country = country,
+                    PostalCode = postal_code,
+                    UserID = user.UserID,
+                };
+
+                _dbContext.Add(customer);
+                _dbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("register", ex.Message);
+                throw;
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            return RedirectToAction("Index");
 
         }
 

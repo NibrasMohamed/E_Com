@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Remove="DataBaseConnection\DataBaseConnection.cs" />
+    <Compile Remove="DataBaseConnection\User.cs" />
   </ItemGroup>
 
   <ItemGroup>
