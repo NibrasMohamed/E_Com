@@ -4,6 +4,23 @@
 @model List<Category>;
 @{
 }
+<style>
+    .ribbon .myribbon {
+        position: relative;
+        /* width: 80px; */
+        padding: 6px 20px 6px 20px;
+        margin: 30px 10px 10px -71px;
+        color: #fff;
+        background-color: #2b90d9;
+        text-shadow: 0px 1px 2px #bbb;
+    }
+
+    .img-fluid {
+        max-width: 100%;
+        width: fit-content;
+        height: 400px;
+    }
+</style>
 <div id="content">
         <div class="container">
           <div class="row">
@@ -99,7 +116,7 @@
                   </form>
                 </div>
               </div>
-              <div class="card sidebar-menu mb-4">
+              @*<div class="card sidebar-menu mb-4">
                 <div class="card-header">
                   <h3 class="h4 card-title">Colours <a href="#" class="btn btn-sm btn-danger pull-right"><i class="fa fa-times-circle"></i> Clear</a></h3>
                 </div>
@@ -135,7 +152,7 @@
                     <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
                   </form>
                 </div>
-              </div>
+              </div>*@
               <!-- *** MENUS AND FILTERS END ***-->
               <div class="banner"><a href="#"><img src="~/img/banner.jpg" alt="sales 2014" class="img-fluid"></a></div>
             </div>
@@ -162,7 +179,7 @@
                 </div>
               </div>
               <div class="row products">
-                <div class="col-lg-4 col-md-6">
+                @*<div class="col-lg-4 col-md-6">
                   <div class="product">
                     <div class="flip-container">
                       <div class="flipper">
@@ -180,42 +197,46 @@
                     <!-- /.text-->
                   </div>
                   <!-- /.product            -->
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <div class="product">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="~/img/product2.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="~/img/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="~/img/product2.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3><a href="detail.html">White Blouse Armani</a></h3>
-                      <p class="price"> 
-                        <del>$280</del>$143.00
-                      </p>
-                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                    </div>
-                    <!-- /.text-->
-                    <div class="ribbon sale">
-                      <div class="theribbon">SALE</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                    <div class="ribbon new">
-                      <div class="theribbon">NEW</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                    <div class="ribbon gift">
-                      <div class="theribbon">GIFT</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                  </div>
-                  <!-- /.product            -->
-                </div>
-                <div class="col-lg-4 col-md-6">
+                </div>*@
+                @foreach (var product in ViewBag.Products)
+                    {
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front"><a href="detail.html"><img src="~/img/product2.jpg" alt="" class="img-fluid"></a></div>
+                                        <div class="back"><a href="detail.html"><img src="~/img/@(product.Image ?? "product1.jpg")" alt="" class="img-fluid"></a></div>
+                                    </div>
+                                </div><a href="detail.html" class="invisible"><img src="~/img/product2.jpg" alt="" class="img-fluid"></a>   
+                                <div class="text">
+                                    <h3><a href="detail.html">@product.ModelName</a></h3>
+                                    <p class="price">
+                                        $@product.BasePrice
+                                    </p>
+                                    <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
+                                </div>
+                                <!-- /.text-->
+                                <div class="ribbon sale">
+                                    <div class="myribbon">@product.Series.Brand.BrandName</div>
+                                    <div class="ribbon-background"></div>
+                                </div>
+                                <!-- /.ribbon-->
+                                @*<div class="ribbon new">
+                                    <div class="theribbon">NEW</div>
+                                    <div class="ribbon-background"></div>
+                                </div>
+                                <!-- /.ribbon-->
+                                <div class="ribbon gift">
+                                    <div class="theribbon">GIFT</div>
+                                    <div class="ribbon-background"></div>
+                                </div>*@
+                                <!-- /.ribbon-->
+                            </div>
+                            <!-- /.product            -->
+                        </div>
+                    }
+                
+                @*<div class="col-lg-4 col-md-6">
                   <div class="product">
                     <div class="flip-container">
                       <div class="flipper">
@@ -300,7 +321,7 @@
                     <!-- /.ribbon-->
                   </div>
                   <!-- /.product            -->
-                </div>
+                </div>*@
                 <!-- /.products-->
               </div>
               <div class="pages">

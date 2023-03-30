@@ -40,9 +40,11 @@ namespace LapShop.Controllers
             var categories = _dbContext.Categories.ToList();
             var brands = _dbContext.Brands.ToList();
             var series = _dbContext.Series.ToList();
+            var products = _dbContext.Models.ToList();
 
             ViewBag.Categories = categories;
             ViewBag.Brands = brands;
+            ViewBag.Products = products;
 
             return View();
         }

@@ -59,4 +59,10 @@
     <PackageReference Include="MySqlConnector" Version="2.2.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\img\pngwing.com.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
