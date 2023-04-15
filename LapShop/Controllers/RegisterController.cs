@@ -1,5 +1,6 @@
 ﻿using LapShop.DataBaseConnection;
 using LapShop.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -8,10 +9,12 @@ namespace LapShop.Controllers
     public class RegisterController : Controller
     {
         private readonly MyDbContext _dbContext;
+        private readonly SignInManager<User> _signInManager;
         // GET: RegisterController
-        public RegisterController(MyDbContext dbContext) 
+        public RegisterController(MyDbContext dbContext, SignInManager<User> signInManager)
         {
             _dbContext = dbContext;
+            _signInManager = signInManager;
         }
         public ActionResult Index()
         {
@@ -34,8 +37,8 @@ namespace LapShop.Controllers
             var country = Request.Form["country"];
             var postal_code = Request.Form["code"];
             var phone_no = Request.Form["phone_no"];
-            
-            
+
+
             var email = Request.Form["email"];
             var password = Request.Form["password"];
 
@@ -105,6 +108,28 @@ namespace LapShop.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Login(string email, string password)
+        {
+            var user = _dbContext.Users.FirstOrDefault(x => x.Email == email);
+            if (user == null)
+            {
+                TempData["ErrorMessage"] = "User ID Not found. Please register!";
+                return RedirectToAction("Register");
+            }
+
+            if(user.Password != password)
+            {
+                TempData["ErrorMessage"] = "Password was incorrecr";
+                return RedirectToAction("Regsiter");
+            }
+            var result = await _signInManager.PasswordSignInAsync(email, password, isPersistent: false, lockoutOnFailure: true);
+            if (result.Succeeded)
+            {
+                await _signInManager.SignInAsync(user, isPersistent: false);
+            }
+            return RedirectToAction("/", "Home");
+        }
         // GET: RegisterController/Create
         public ActionResult Create()
         {

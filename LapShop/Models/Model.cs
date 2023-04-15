@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace LapShop.Models
 {
@@ -9,6 +10,7 @@ namespace LapShop.Models
 
         public string? Image{ get; set; }
         public int SeriesID { get; set; }
+        [ForeignKey("SeriesId")]
         public decimal BasePrice { get; set; }
         public Series Series { get; set; }
     }
