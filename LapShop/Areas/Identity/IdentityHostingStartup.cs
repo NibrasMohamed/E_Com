@@ -12,12 +12,13 @@ namespace LapShop.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {
+       /* public IConfiguration Configuration { get; set; }*/
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<AuthDbContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("AuthDbContextConnection")));
+                    options.UseMySQL(context.Configuration.GetConnectionString("AuthDbContextConnection")));
+            /*options.UseSqlServer(context.Configuration.GetConnectionString("AuthDbContextConnection")));*/
 
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<AuthDbContext>();

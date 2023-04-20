@@ -5,7 +5,11 @@
     Layout = "~/Views/Admin/Shared/_AdminTemplate.cshtml";
 }
 
-<h1>Index</h1>
+<h1> Models </h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item">Models</li>
+    <li class="breadcrumb-item active">View</li>
+</ol>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -25,7 +29,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Series)
             </th>
-            <th></th>
+            <th> Action</th>
         </tr>
     </thead>
     <tbody>
@@ -41,7 +45,7 @@
                 @Html.DisplayFor(modelItem => item.BasePrice)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Series.SeriesID)
+                @Html.DisplayFor(modelItem => item.Series.SeriesName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ModelID">Edit</a> |

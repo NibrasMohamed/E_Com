@@ -1,11 +1,12 @@
 
 using LapShop;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+/*builder.Services.AddDefaultIdentity<IdentityUser>(option => option.SignIn.RequireConfirmedAccount = true);*/
 var startup = new Startup(builder.Configuration);
 
 startup.ConfigureServices(builder.Services);

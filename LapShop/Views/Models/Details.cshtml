@@ -4,12 +4,13 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Admin/Shared/_AdminTemplate.cshtml";
 }
-
-<h1>Details</h1>
-
 <div>
-    <h4>Model</h4>
-    <hr />
+    <h1 class="mt-4">View</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-action="Index">Models</a></li>
+        <li class="breadcrumb-item">View</li>
+        <li class="breadcrumb-item active">Edit Computer/@Model.ModelName</li>
+    </ol>
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.ModelName)
